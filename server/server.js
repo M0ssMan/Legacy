@@ -10,6 +10,15 @@ app.use(function(req, res, next){
   next();
 })
 
+app.use(function(req, res, next){
+  console.log(req.headers);
+  res.writeHead(200, {
+    'Set-Cookie': "myCookieTest",
+    'Content-Type': 'text/plain'
+  })
+  res.end('Hello World')
+})
+
 app.get('/', express.static('./client'));
 
 app.listen(app.get('port'), function(){
